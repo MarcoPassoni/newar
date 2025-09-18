@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contatti | Newar Records APS</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+<header>
+  <nav class="navbar">
+    <a href="index.html#home" class="logo"><img src="img/image.png" alt="Logo" class="logo-img" /><span class="logo-text">Newar Records APS</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">Chi siamo</a></li>
+      <li><a href="index.html#services">Servizi</a></li>
+      <li><a href="index.html#founders">Fondatori</a></li>
+      <li><a href="index.html#location">Dove siamo</a></li>
+      <li><a href="contact.html" class="active">Contatti</a></li>
+    </ul>
+    <div class="mobile-menu-icon" id="mobileMenuIcon"><span></span><span></span><span></span></div>
+    <div class="mobile-menu-fullscreen" id="mobileMenuFullscreen">
+      <ul>
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#about">Chi siamo</a></li>
+        <li><a href="index.html#services">Servizi</a></li>
+        <li><a href="index.html#founders">Fondatori</a></li>
+        <li><a href="index.html#location">Dove siamo</a></li>
+        <li><a href="contact.html">Contatti</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<main>
+  <section class="contact" id="contact">
+    <h2 class="founders-title">Contattaci</h2>
+    <p style="text-align:center; max-width:760px; margin:0 auto 2rem; color:var(--sky);">Compila il form per richieste tecniche, preventivi, collaborazioni o proposte artistiche. Ti risponderemo il prima possibile.</p>
+    <form id="contactForm">
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div class="form-group">
+        <label for="message">Messaggio</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      <button type="submit" class="cta-btn">Invia</button>
+      <div id="formMessage"></div>
+    </form>
+    <div class="contact-info">
+      <p>Email: <a href="mailto:newar.records.aps@gmail.com">newar.records.aps@gmail.com</a><br/>Instagram: <a target="_blank" href="https://www.instagram.com/newar_records/">@newar.records</a></p>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="footer-content">
+    <span>© Newar Records APS – Tutti i diritti riservati</span>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

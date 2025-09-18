@@ -1,0 +1,841 @@
+/* ===================== RESET E VARIABILI GIALLE ===================== */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+    --yellow-primary: #FFD700;
+    --yellow-bright: #FFF200;
+    --yellow-dark: #FFA500;
+    --yellow-deep: #FF8C00;
+    --yellow-soft: #FFEB3B;
+    --black-rich: #1a1a1a;
+    --black-deep: #0a0a0a;
+    --white-pure: #ffffff;
+    --gray-light: #f5f5f5;
+    --accent-orange: #FF6B35;
+    --trans: all .4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+body { 
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif; 
+    background: linear-gradient(135deg, var(--black-deep) 0%, var(--black-rich) 100%);
+    color: var(--white-pure); 
+    line-height: 1.6; 
+    overflow-x: hidden;
+}
+
+.container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+}
+
+/* ===================== WHATSAPP STICKY GIALLO ===================== */
+.whatsapp-sticky {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, var(--yellow-primary), var(--yellow-dark));
+    color: var(--black-deep);
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    box-shadow: 0 8px 30px rgba(255, 215, 0, 0.4);
+    z-index: 1000;
+    transition: var(--trans);
+    animation: pulseYellow 2s infinite;
+}
+
+.whatsapp-sticky:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 12px 40px rgba(255, 215, 0, 0.6);
+    background: linear-gradient(135deg, var(--yellow-bright), var(--yellow-primary));
+}
+
+@keyframes pulseYellow {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.05) rotate(2deg); }
+}
+
+/* ===================== NAVBAR GIALLA ===================== */
+.navbar { 
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    background: rgba(10,10,10,0.95); 
+    backdrop-filter: blur(25px); 
+    padding: 1rem 2rem; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    z-index: 999; 
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.1);
+}
+
+.logo { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    text-decoration: none; 
+    transition: var(--trans); 
+}
+
+.logo:hover { 
+    transform: scale(1.05); 
+}
+
+.logo-img { 
+    height: 50px; 
+    width: 50px; 
+    object-fit: cover; 
+    border-radius: 15px; 
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5); 
+    border: 2px solid var(--yellow-primary); 
+}
+
+.logo-text { 
+    font-weight: 800; 
+    font-size: 1.4rem;
+    background: linear-gradient(90deg, var(--yellow-primary), var(--yellow-bright)); 
+    -webkit-background-clip: text; 
+    background-clip: text; 
+    color: transparent; 
+    text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Desktop Navigation */
+.nav-links { 
+    list-style: none; 
+    display: flex; 
+    gap: 2.5rem; 
+}
+
+.nav-links a { 
+    color: var(--white-pure); 
+    text-decoration: none; 
+    font-weight: 600; 
+    font-size: 1rem; 
+    padding: 0.8rem 0; 
+    position: relative;
+    transition: var(--trans); 
+}
+
+.nav-links a:hover { 
+    color: var(--yellow-primary); 
+    text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+}
+
+.nav-links a:after { 
+    content: ""; 
+    position: absolute; 
+    left: 0; 
+    bottom: 0; 
+    height: 3px; 
+    width: 0; 
+    background: linear-gradient(90deg, var(--yellow-primary), var(--yellow-bright));
+    transition: width 0.3s ease; 
+    border-radius: 2px;
+}
+
+.nav-links a:hover:after { width: 100%; }
+
+/* Mobile Menu */
+.mobile-menu-icon { 
+    display: none; 
+    flex-direction: column; 
+    gap: 5px; 
+    cursor: pointer; 
+    z-index: 999; 
+}
+
+.mobile-menu-icon span { 
+    width: 28px; 
+    height: 3px; 
+    background: var(--yellow-primary); 
+    border-radius: 3px; 
+    transition: 0.3s; 
+}
+
+.mobile-menu-icon.open span:nth-child(1) { transform: rotate(45deg) translate(7px, 7px); }
+.mobile-menu-icon.open span:nth-child(2) { opacity: 0; }
+.mobile-menu-icon.open span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.8);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 997;
+}
+
+.mobile-menu-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu-fullscreen { 
+    position: fixed; 
+    top: 0; 
+    right: -100%; 
+    width: min(300px, 80vw); 
+    height: 100vh; 
+    background: linear-gradient(160deg, var(--black-deep) 0%, var(--black-rich) 100%); 
+    padding: 100px 0 40px; 
+    transition: right 0.4s cubic-bezier(0.25,0.46,0.45,0.94); 
+    z-index: 998; 
+    box-shadow: -15px 0 50px rgba(0,0,0,0.8);
+    border-left: 3px solid var(--yellow-primary);
+}
+
+.mobile-menu-fullscreen.open { right: 0; }
+
+.mobile-menu-fullscreen ul { list-style: none; }
+
+.mobile-menu-fullscreen a { 
+    display: block;
+    color: var(--white-pure); 
+    text-decoration: none; 
+    padding: 20px 30px; 
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transition: var(--trans); 
+}
+
+.mobile-menu-fullscreen a:hover { 
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.2), transparent); 
+    color: var(--yellow-primary);
+    padding-left: 40px;
+    border-left: 4px solid var(--yellow-primary);
+}
+
+/* ===================== HERO GIALLO PROFESSIONALE ===================== */
+.hero-professional {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--black-deep) 0%, var(--black-rich) 100%);
+}
+
+.hero-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+.hero-video-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(10,10,10,0.8) 0%, rgba(26,26,26,0.7) 100%);
+    z-index: -1;
+}
+
+.hero-content-pro {
+    text-align: center;
+    max-width: 900px;
+    z-index: 1;
+    animation: heroFadeInYellow 1.2s ease-out;
+}
+
+@keyframes heroFadeInYellow {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-title-pro {
+    font-size: clamp(2.8rem, 7vw, 4.5rem);
+    font-weight: 800;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.highlight-main {
+    background: linear-gradient(90deg, var(--yellow-primary), var(--yellow-bright));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: none;
+    filter: drop-shadow(0 2px 10px rgba(255, 215, 0, 0.3));
+}
+
+.highlight-location {
+    background: linear-gradient(90deg, var(--white-pure), var(--gray-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 2.5rem;
+    color: var(--gray-light);
+    font-weight: 400;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.hero-cta-group {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.cta-primary {
+    background: linear-gradient(135deg, var(--yellow-primary), var(--yellow-dark));
+    color: var(--black-deep);
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: var(--trans);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-primary:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.6s;
+}
+
+.cta-primary:hover:before {
+    left: 100%;
+}
+
+.cta-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+    background: linear-gradient(135deg, var(--yellow-bright), var(--yellow-primary));
+}
+
+.cta-secondary {
+    background: rgba(255,255,255,0.1);
+    color: var(--white-pure);
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid var(--yellow-primary);
+    transition: var(--trans);
+    backdrop-filter: blur(15px);
+}
+
+.cta-secondary:hover {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: var(--yellow-bright);
+    color: var(--yellow-primary);
+    transform: translateY(-3px);
+}
+
+.hero-badges {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.badge {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.1));
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    backdrop-filter: blur(15px);
+    transition: var(--trans);
+}
+
+.badge:hover {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 215, 0, 0.2));
+    transform: translateY(-2px);
+}
+
+.hero-scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    animation: bounceYellow 2s infinite;
+    color: var(--yellow-primary);
+}
+
+@keyframes bounceYellow {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-12px); }
+    60% { transform: translateX(-50%) translateY(-6px); }
+}
+
+.scroll-arrow {
+    font-size: 1.8rem;
+    color: var(--yellow-primary);
+    margin-top: 0.5rem;
+    filter: drop-shadow(0 2px 10px rgba(255, 215, 0, 0.3));
+}
+
+/* ===================== SERVIZI GIALLI PROFESSIONALI ===================== */
+.services-pro {
+    padding: 120px 0;
+    background: linear-gradient(135deg, var(--black-rich) 0%, var(--black-deep) 100%);
+    position: relative;
+}
+
+.services-pro:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 70%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+    z-index: 0;
+}
+
+.section-title-pro {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, var(--yellow-primary), var(--yellow-bright));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 4px 20px rgba(255, 215, 0, 0.2));
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.3rem;
+    color: var(--gray-light);
+    margin-bottom: 4rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.services-grid-pro {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin-top: 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.service-card-pro {
+    background: linear-gradient(150deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    border: 2px solid rgba(255, 215, 0, 0.2);
+    border-radius: 25px;
+    overflow: hidden;
+    transition: var(--trans);
+    backdrop-filter: blur(15px);
+    position: relative;
+}
+
+.service-card-pro:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), transparent);
+    opacity: 0;
+    transition: var(--trans);
+    z-index: 0;
+}
+
+.service-card-pro:hover:before {
+    opacity: 1;
+}
+
+.service-card-pro:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(255, 215, 0, 0.3);
+    border-color: var(--yellow-primary);
+}
+
+.service-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--trans);
+    filter: brightness(0.8);
+}
+
+.service-card-pro:hover .service-image img {
+    transform: scale(1.15);
+    filter: brightness(1);
+}
+
+.service-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), rgba(255, 140, 0, 0.3));
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 1.5rem;
+}
+
+.service-badge {
+    background: linear-gradient(135deg, var(--yellow-primary), var(--yellow-dark));
+    color: var(--black-deep);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.service-content {
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.service-content h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--yellow-primary);
+    text-shadow: 0 2px 10px rgba(255, 215, 0, 0.2);
+}
+
+.service-content p {
+    color: var(--gray-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.service-features {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.service-features li {
+    color: var(--white-pure);
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+    position: relative;
+    padding-left: 20px;
+}
+
+.service-features li:before {
+    content: '●';
+    color: var(--yellow-primary);
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+}
+
+.service-cta {
+    background: linear-gradient(135deg, var(--yellow-primary), var(--yellow-dark));
+    color: var(--black-deep);
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: var(--trans);
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-cta:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.service-cta:hover:before {
+    left: 100%;
+}
+
+.service-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.5);
+    background: linear-gradient(135deg, var(--yellow-bright), var(--yellow-primary));
+}
+
+/* ===================== PORTFOLIO GIALLO ===================== */
+.portfolio-section {
+    padding: 120px 0;
+    background: linear-gradient(135deg, var(--black-deep) 0%, var(--black-rich) 100%);
+    position: relative;
+}
+
+.portfolio-section:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 70% 30%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+    z-index: 0;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.portfolio-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    background: var(--black-deep);
+    border: 2px solid rgba(255, 215, 0, 0.2);
+    transition: var(--trans);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+    border-color: var(--yellow-primary);
+    box-shadow: 0 20px 50px rgba(255, 215, 0, 0.2);
+}
+
+.portfolio-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.portfolio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--trans);
+    filter: brightness(0.8);
+}
+
+.portfolio-item:hover .portfolio-image img {
+    transform: scale(1.1);
+    filter: brightness(1);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.8), rgba(255, 140, 0, 0.6));
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+    opacity: 0;
+    transition: var(--trans);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-info h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: var(--black-deep);
+}
+
+.portfolio-info p {
+    color: var(--black-rich);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.portfolio-category {
+    background: rgba(0,0,0,0.3);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--white-pure);
+    backdrop-filter: blur(10px);
+}
+
+/* ===================== RESPONSIVE GIALLO ===================== */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .mobile-menu-icon {
+        display: flex;
+    }
+    
+    .hero-title-pro {
+        font-size: 2.5rem;
+    }
+    
+    .hero-cta-group {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-badges {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .services-grid-pro {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title-pro {
+        font-size: 2.2rem;
+    }
+    
+    .services-pro,
+    .portfolio-section {
+        padding: 80px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-professional {
+        height: 90vh;
+    }
+    
+    .hero-title-pro {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .cta-primary,
+    .cta-secondary {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .services-grid-pro {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .service-card-pro {
+        margin: 0 10px;
+    }
+}
+
+/* ===================== ANIMAZIONI EXTRA ===================== */
+@keyframes fadeInUpYellow {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animated-section {
+    animation: fadeInUpYellow 0.8s ease-out;
+}
+
+/* ===================== EFFETTI GLOW GIALLI ===================== */
+.glow-yellow {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.glow-yellow:hover {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+}
+
+/* ===================== SCROLLBAR PERSONALIZZATA ===================== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--black-deep);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--yellow-primary), var(--yellow-dark));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--yellow-bright), var(--yellow-primary));
+}
