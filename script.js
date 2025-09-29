@@ -168,6 +168,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// ===================== reCAPTCHA VALIDATION ===================== 
+function validateRecaptcha() {
+    const recaptchaResponse = grecaptcha.getResponse();
+    return recaptchaResponse && recaptchaResponse.length > 0;
+}
+
+// Callback per reset reCAPTCHA se necessario
+function resetRecaptcha() {
+    if (typeof grecaptcha !== 'undefined') {
+        grecaptcha.reset();
+    }
+}
+
 // ===================== FORM OTTIMIZZATO MOBILE ===================== 
 document.addEventListener('DOMContentLoaded', function() {
     const quoteForm = document.getElementById('quote-form');
@@ -203,6 +216,17 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (!isValid) {
                 showErrorMessage('Compila tutti i campi obbligatori');
+                return;
+            }
+            
+            // Validazione reCAPTCHA
+            if (!validateRecaptcha()) {
+                showErrorMessage('🛡️ Completa la verifica reCAPTCHA per continuare');
+                // Scroll verso il reCAPTCHA
+                const recaptchaContainer = document.querySelector('.recaptcha-container');
+                if (recaptchaContainer) {
+                    recaptchaContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
                 return;
             }
             
@@ -253,8 +277,9 @@ ${data.messaggio}
             setTimeout(() => {
                 window.open(whatsappURL, '_blank');
                 
-                // Reset form
+                // Reset form e reCAPTCHA
                 this.reset();
+                resetRecaptcha();
                 if (submitButton) {
                     submitButton.disabled = false;
                     submitButton.innerHTML = '🚀 Richiedi Preventivo Gratuito';

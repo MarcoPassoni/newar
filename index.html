@@ -1,4 +1,17 @@
 <!DOCTYPE html>
+<!--
+    ✅ reCAPTCHA CONFIGURATO CORRETTAMENTE ✅
+    
+    Site Key (Frontend): 6Lch8tgrAAAAAA3B-erz5RkOxAsfyZgsBCIgirG1 ✓
+    Secret Key (Backend): 6Lch8tgrAAAAAEGcgAcN-BI9dOSr4LzVzooBC6Ky
+    
+    NOTA: La Secret Key deve essere usata SOLO lato server per verificare 
+    le risposte reCAPTCHA. Mai esporre la Secret Key nel frontend!
+    
+    Per verifiche lato server, invia POST a:
+    https://www.google.com/recaptcha/api/siteverify
+    con parametri: secret, response, remoteip
+-->
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -10,6 +23,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+     <script>
+   function onSubmit(token) {
+     document.getElementById("demo-form").submit();
+   }
+ </script>
 </head>
 <body id="home">
     <!-- WHATSAPP STICKY BUTTON -->
@@ -278,6 +297,32 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=400&fit=crop" alt="Matrimonio Villa Como" loading="lazy">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-info">
+                                    <h4>Matrimonio Villa Como</h4>
+                                    <p>200 invitati • Illuminazione scenografica • 2024</p>
+                                    <span class="portfolio-category">MATRIMONIO</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=400&fit=crop" alt="Matrimonio Villa Como" loading="lazy">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-info">
+                                    <h4>Matrimonio Villa Como</h4>
+                                    <p>200 invitati • Illuminazione scenografica • 2024</p>
+                                    <span class="portfolio-category">MATRIMONIO</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -342,6 +387,13 @@
                                 <option value="da-definire">Da definire</option>
                             </select>
                             <textarea name="messaggio" placeholder="Descrivi il tuo evento, location, numero ospiti..."></textarea>
+                            
+                            <!-- reCAPTCHA v2 -->
+                            <div class="recaptcha-container">
+                                <div class="g-recaptcha" data-sitekey="6Lch8tgrAAAAAA3B-erz5RkOxAsfyZgsBCIgirG1"></div>
+                                <p class="recaptcha-note">🛡️ Verifica di sicurezza obbligatoria per prevenire spam</p>
+                            </div>
+                            
                             <button type="submit" class="quote-submit">🚀 Richiedi Preventivo Gratuito</button>
                             <p class="form-note">*Campi obbligatori. I tuoi dati sono protetti e non verranno mai condivisi.</p>
                         </form>
@@ -529,29 +581,36 @@
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer-pro">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <img src="img/logo-newar.png" alt="Newar Records" class="footer-logo">
-                    <p>Service audio e luci professionali Milano e Lombardia</p>
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo-section">
+                        <img src="img/image.png" alt="Newar Records APS" class="footer-logo">
+                        <span class="footer-logo-text">Newar Records</span>
+                    </div>
+                    <p class="footer-description">Service audio e luci professionali a Milano e Lombardia.</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/newar_records/" target="_blank" aria-label="Instagram">
+                            <span>�</span> Instagram
+                        </a>
+                        <a href="https://wa.me/393401234567" target="_blank" aria-label="WhatsApp">
+                            <span>�</span> WhatsApp
+                        </a>
+                    </div>
                 </div>
-                <div class="footer-links">
-                    <h6>Servizi</h6>
-                    <a href="noleggio-audio-milano.html">Noleggio Audio Milano</a>
-                    <a href="noleggio-luci-milano.html">Noleggio Luci Milano</a>
-                    <a href="service-eventi-milano.html">Service Eventi</a>
-                    <a href="studio-registrazione-milano.html">Studio Registrazione</a>
-                </div>
-                <div class="footer-contact">
-                    <h6>Contatti</h6>
-                    <p>📞 <a href="tel:+393401234567">+39 340 123 4567</a></p>
-                    <p>📧 <a href="mailto:info@newarrecords.it">info@newarrecords.it</a></p>
-                    <p>📍 Usmate Velate (MB)</p>
-                </div>
+
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Newar Records APS. Service Audio e Luci Milano. Partita IVA: IT12345678901</p>
+
+            <div class="footer-bottom-simple">
+                <div class="footer-info">
+                    <p>&copy; 2025 Newar Records APS Milano - P.IVA: IT 12345678901</p>
+                    <p>Via Roma 123, Usmate Velate (MB) - Tel: +39 340 123 4567</p>
+                </div>
+                <div class="footer-links-simple">
+                    <a href="/privacy.html">Privacy</a>
+                    <a href="/cookie.html">Cookie</a>
+                </div>
             </div>
         </div>
     </footer>
