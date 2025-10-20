@@ -55,7 +55,7 @@ img, video, iframe {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: linear-gradient(135deg, var(--yellow-primary), var(--yellow-dark));
+    background: linear-gradient(135deg, #25D366, #128C7E);
     color: var(--black-deep);
     padding: 15px 25px;
     border-radius: 50px;
@@ -70,8 +70,8 @@ img, video, iframe {
 
 .whatsapp-sticky:hover {
     transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 12px 40px rgba(255, 215, 0, 0.6);
-    background: linear-gradient(135deg, var(--yellow-bright), var(--yellow-primary));
+    box-shadow: 0 12px 40px rgba(72, 255, 0, 0.6);
+    background: linear-gradient(135deg, #25D366, #128C7E);
 }
 
 @keyframes pulseYellow {
