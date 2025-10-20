@@ -6,19 +6,105 @@
     <title>Newar Records APS - Service Audio e Luci Milano | Noleggio Attrezzature Eventi</title>
     <meta name="description" content="Service audio e luci professionale a Milano e Lombardia. Noleggio attrezzature, gestione eventi, matrimoni, concerti. Preventivo gratuito in 2 ore!">
     <meta name="keywords" content="service audio luci Milano, noleggio audio Milano, matrimoni luci, concerti Milano, eventi corporate, studio registrazione Milano, line array, illuminazione eventi">
+    <!-- Preload critical resources -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="img/image.png" as="image">
+    <link rel="preload" href="img/video-hero.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" as="style" crossorigin="anonymous">
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//www.google.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//wa.me">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- reCAPTCHA with optimized loading -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
      <script>
    function onSubmit(token) {
      document.getElementById("demo-form").submit();
    }
  </script>
+
+    <!-- Critical CSS for initial loading -->
+    <style>
+        /* Preloader */
+        #page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loader-content {
+            text-align: center;
+            color: #FFD700;
+        }
+        
+        .loader-logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+            border-radius: 50%;
+            border: 3px solid #FFD700;
+            border-top: 3px solid transparent;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loader-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+        
+        /* Hide content initially */
+        body:not(.loaded) .main-content {
+            opacity: 0;
+        }
+        
+        body.loaded #page-loader {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        body.loaded .main-content {
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+    </style>
 </head>
 <body id="home">
-    <!-- WHATSAPP STICKY BUTTON -->
+    <!-- PAGE LOADER -->
+    <div id="page-loader">
+        <div class="loader-content">
+            <div class="loader-logo"></div>
+            <div class="loader-text">Newar Records</div>
+            <div style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">Caricamento...</div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="main-content">
+        <!-- WHATSAPP STICKY BUTTON -->
     <a href="https://wa.me/393401234567?text=Ciao! Vorrei un preventivo per il mio evento" class="whatsapp-sticky" target="_blank" rel="noopener">
         💬 WhatsApp
     </a>
@@ -26,7 +112,7 @@
     <header>
         <nav class="navbar glass-nav" aria-label="Navigazione principale">
             <a href="#home" class="logo" aria-label="Homepage Newar Records APS">
-                <img src="img/image.png" alt="Newar Records Service Audio Luci Milano" class="logo-img"> 
+                <img src="img/image.png" alt="Newar Records Service Audio Luci Milano" class="logo-img" loading="eager" fetchpriority="high"> 
                 <span class="logo-text">Newar Records</span>
             </a>
             
@@ -37,7 +123,7 @@
             
             <!-- Desktop Navigation -->
             <ul class="nav-links desktop-nav" role="menubar">
-                <li role="none"><a role="menuitem" href="#home">Home</a></li>
+                <li role="none"><a role="menuitem" href="#home">diobestia</a></li>
                 <li role="none"><a role="menuitem" href="#servizi">Servizi</a></li>
                 <li role="none"><a role="menuitem" href="#portfolio">Portfolio</a></li>
                 <li role="none"><a role="menuitem" href="#chi-siamo">Chi Siamo</a></li>
@@ -64,8 +150,45 @@
         <!-- HERO DINAMICA CON VIDEO BACKGROUND -->
         <section class="hero-professional" id="home">
             <div class="hero-video-bg">
-                <!-- Video background rimosso temporaneamente fino a quando non carichi un video -->
-                <div style="background: transparent; width: 100%; height: 100%;"></div>
+                <!-- Background animato CSS che simula video -->
+                <div class="animated-background">
+                    <div class="light-beam"></div>
+                    <div class="light-beam"></div>
+                    <div class="light-beam"></div>
+                    <div class="light-beam"></div>
+                    <div class="light-beam"></div>
+                    <div class="equalizer">
+                        <div class="equalizer-bar"></div>
+                        <div class="equalizer-bar"></div>
+                        <div class="equalizer-bar"></div>
+                        <div class="equalizer-bar"></div>
+                        <div class="equalizer-bar"></div>
+                        <div class="equalizer-bar"></div>
+                        <div class="equalizer-bar"></div>
+                    </div>
+                    <div class="particles">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                    </div>
+                </div>
+                
+                <!-- Video di sfondo in bianco e nero -->
+                <video 
+                    id="hero-video" 
+                    autoplay 
+                    muted 
+                    loop 
+                    playsinline
+                    preload="metadata"
+                    class="hero-video-active"
+                >
+                    <source src="img/video-hero.mp4" type="video/mp4">
+                    Il tuo browser non supporta i video HTML5.
+                </video>
+                
                 <div class="hero-overlay"></div>
             </div>
             <div class="hero-content-pro">
@@ -100,7 +223,7 @@
                     <!-- AUDIO -->
                     <div class="service-card-pro" data-service="audio">
                         <div class="service-image">
-                            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop" alt="Service Audio Professionale Milano" loading="lazy">
+                            <img src="img/service-audio.jpg" alt="Service Audio Professionale Milano" loading="lazy" onerror="this.onerror=null;this.src='img/placeholder-600x400.svg';">
                             <div class="service-overlay">
                                 <span class="service-badge">AUDIO PRO</span>
                             </div>
@@ -121,7 +244,7 @@
                     <!-- DJ SERVICES -->
                     <div class="service-card-pro" data-service="dj">
                         <div class="service-image">
-                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop" alt="DJ Service Milano Eventi" loading="lazy">
+                            <img src="img/service-dj.jpg" alt="DJ Service Milano Eventi" loading="lazy" onerror="this.onerror=null;this.src='img/placeholder-600x400.svg';">
                             <div class="service-overlay">
                                 <span class="service-badge">DJ EXPERT</span>
                             </div>
@@ -142,7 +265,7 @@
                     <!-- EVENTI -->
                     <div class="service-card-pro" data-service="eventi">
                         <div class="service-image">
-                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&h=400&fit=crop" alt="Gestione Eventi Milano Matrimoni" loading="lazy">
+                            <img src="img/service-eventi.jpg" alt="Gestione Eventi Milano Matrimoni" loading="lazy" onerror="this.onerror=null;this.src='img/placeholder-600x400.svg';">
                             <div class="service-overlay">
                                 <span class="service-badge">EVENTI</span>
                             </div>
@@ -163,7 +286,7 @@
                     <!-- GRAFICA -->
                     <div class="service-card-pro" data-service="grafica">
                         <div class="service-image">
-                            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop" alt="Grafica Design Milano Branding" loading="lazy">
+                            <img src="img/service-grafica.jpg" alt="Grafica Design Milano Branding" loading="lazy" onerror="this.onerror=null;this.src='img/placeholder-600x400.svg';">
                             <div class="service-overlay">
                                 <span class="service-badge">DESIGN</span>
                             </div>
@@ -184,7 +307,7 @@
                     <!-- PRODUZIONE -->
                     <div class="service-card-pro" data-service="produzione">
                         <div class="service-image">
-                            <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600&h=400&fit=crop" alt="Produzione Musicale Milano Studio" loading="lazy">
+                            <img src="img/service-produzione.jpg" alt="Produzione Musicale Milano Studio" loading="lazy" onerror="this.onerror=null;this.src='img/placeholder-600x400.svg';">
                             <div class="service-overlay">
                                 <span class="service-badge">PRODUCTION</span>
                             </div>
@@ -205,7 +328,7 @@
                     <!-- STUDIO -->
                     <div class="service-card-pro" data-service="studio">
                         <div class="service-image">
-                            <img src="https://images.unsplash.com/photo-1598653222000-6b7b7a552625?w=600&h=400&fit=crop" alt="Studio Registrazione Milano Recording" loading="lazy">
+                            <img src="img/service-studio.jpg" alt="Studio Registrazione Milano Recording" loading="lazy" onerror="this.onerror=null;this.src='img/placeholder-600x400.svg';">
                             <div class="service-overlay">
                                 <span class="service-badge">STUDIO</span>
                             </div>
@@ -235,7 +358,7 @@
                 <div class="portfolio-grid">
                     <div class="portfolio-item">
                         <div class="portfolio-image">
-                            <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=600&h=400&fit=crop" alt="Concerto Live Milano" loading="lazy">
+                            <img src="https://picsum.photos/600/400?random=7" alt="Concerto Live Milano" loading="lazy">
                             <div class="portfolio-overlay">
                                 <div class="portfolio-info">
                                     <h4>Concerto Live Milano</h4>
@@ -248,7 +371,7 @@
                     
                     <div class="portfolio-item">
                         <div class="portfolio-image">
-                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=400&fit=crop" alt="Matrimonio Villa Como" loading="lazy">
+                            <img src="https://picsum.photos/600/400?random=8" alt="Matrimonio Villa Como" loading="lazy">
                             <div class="portfolio-overlay">
                                 <div class="portfolio-info">
                                     <h4>Matrimonio Villa Como</h4>
@@ -261,7 +384,7 @@
                     
                     <div class="portfolio-item">
                         <div class="portfolio-image">
-                            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&h=400&fit=crop" alt="Festival Musicale Monza" loading="lazy">
+                            <img src="https://picsum.photos/600/400?random=9" alt="Festival Musicale Monza" loading="lazy">
                             <div class="portfolio-overlay">
                                 <div class="portfolio-info">
                                     <h4>Festival Musicale Monza</h4>
@@ -274,7 +397,7 @@
                     
                     <div class="portfolio-item">
                         <div class="portfolio-image">
-                            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&h=400&fit=crop" alt="Evento Corporate Milano" loading="lazy">
+                            <img src="https://picsum.photos/600/400?random=10" alt="Evento Corporate Milano" loading="lazy">
                             <div class="portfolio-overlay">
                                 <div class="portfolio-info">
                                     <h4>Evento Corporate Milano</h4>
@@ -287,7 +410,7 @@
 
                     <div class="portfolio-item">
                         <div class="portfolio-image">
-                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=400&fit=crop" alt="Matrimonio Villa Como" loading="lazy">
+                            <img src="https://picsum.photos/600/400?random=11" alt="Matrimonio Villa Como" loading="lazy">
                             <div class="portfolio-overlay">
                                 <div class="portfolio-info">
                                     <h4>Matrimonio Villa Como</h4>
@@ -300,7 +423,7 @@
 
                     <div class="portfolio-item">
                         <div class="portfolio-image">
-                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=400&fit=crop" alt="Matrimonio Villa Como" loading="lazy">
+                            <img src="https://picsum.photos/600/400?random=12" alt="Matrimonio Villa Como" loading="lazy">
                             <div class="portfolio-overlay">
                                 <div class="portfolio-info">
                                     <h4>Matrimonio Villa Como</h4>
@@ -573,7 +696,7 @@
             <div class="footer-main">
                 <div class="footer-brand">
                     <div class="footer-logo-section">
-                        <img src="img/image.png" alt="Newar Records APS" class="footer-logo">
+                        <img src="img/image.png" alt="Newar Records APS" class="footer-logo" loading="lazy">
                         <span class="footer-logo-text">Newar Records</span>
                     </div>
                     <p class="footer-description">Service audio e luci professionali a Milano e Lombardia.</p>
@@ -601,7 +724,54 @@
             </div>
         </div>
     </footer>
+    </div>
+    <!-- END MAIN CONTENT WRAPPER -->
 
-    <script src="script.js"></script>
+    <script>
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                    console.log('SW registrato con successo: ', registration.scope);
+                }, function(err) {
+                    console.log('SW registrazione fallita: ', err);
+                });
+            });
+        }
+
+        // Preloader management
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.body.classList.add('loaded');
+                setTimeout(function() {
+                    document.getElementById('page-loader').style.display = 'none';
+                }, 500);
+            }, 300);
+        });
+
+        // Optimize image loading
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add intersection observer for lazy loading optimization
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            if (img.dataset.src) {
+                                img.src = img.dataset.src;
+                                img.classList.remove('lazy');
+                                imageObserver.unobserve(img);
+                            }
+                        }
+                    });
+                });
+
+                document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                    imageObserver.observe(img);
+                });
+            }
+        });
+    </script>
+    <script src="script.js" defer></script>
 </body>
 </html>

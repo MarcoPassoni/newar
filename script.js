@@ -1,3 +1,65 @@
+// ===================== VIDEO BACKGROUND MANAGEMENT ===================== 
+document.addEventListener('DOMContentLoaded', function() {
+    const heroVideo = document.getElementById('hero-video');
+    const animatedBackground = document.querySelector('.animated-background');
+    
+    if (heroVideo) {
+        // Gestione del video background in bianco e nero
+        heroVideo.addEventListener('loadeddata', function() {
+            // Video caricato con successo - nascondi animazione CSS
+            heroVideo.classList.add('loaded');
+            if (animatedBackground) {
+                animatedBackground.style.display = 'none';
+            }
+            console.log('Video background caricato in bianco e nero');
+        });
+
+        heroVideo.addEventListener('canplay', function() {
+            // Video pronto per la riproduzione
+            heroVideo.style.display = 'block';
+            heroVideo.play().catch(e => console.log('Autoplay bloccato:', e));
+        });
+
+        heroVideo.addEventListener('error', function() {
+            // Errore nel caricamento del video, mostra animazione CSS
+            console.log('Errore nel caricamento video, usando animazione CSS');
+            heroVideo.style.display = 'none';
+            if (animatedBackground) {
+                animatedBackground.style.display = 'block';
+            }
+        });
+
+        // Prova a caricare il video
+        heroVideo.load();
+
+        // Controlla se il video è in viewport per ottimizzare performance
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (heroVideo.paused) {
+                        heroVideo.play().catch(e => {
+                            console.log('Auto-play fallito, video silenzioso');
+                        });
+                    }
+                } else {
+                    heroVideo.pause();
+                }
+            });
+        });
+
+        observer.observe(heroVideo);
+
+        // Pause video quando la pagina non è visibile (performance)
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                heroVideo.pause();
+            } else {
+                heroVideo.play().catch(e => console.log('Play fallito'));
+            }
+        });
+    }
+});
+
 // ===================== MENU MOBILE MANAGEMENT OTTIMIZZATO ===================== 
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
